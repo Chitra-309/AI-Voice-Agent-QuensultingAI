@@ -1,0 +1,205 @@
+{
+  "agent_id": "",
+  "channel": "voice",
+  "last_modification_timestamp": 1783263631341,
+  "agent_name": "Conversation Flow Agent",
+  "response_engine": {
+    "type": "conversation-flow",
+    "version": 0,
+    "conversation_flow_id": "conversation_flow_27b767a7020b"
+  },
+  "language": "en-US",
+  "data_storage_setting": "everything",
+  "opt_in_signed_url": false,
+  "version": 0,
+  "assigned_tags": [],
+  "is_published": false,
+  "post_call_analysis_model": "gpt-4.1",
+  "pii_config": {
+    "mode": "post_call",
+    "categories": []
+  },
+  "handbook_config": {
+    "default_personality": true,
+    "ai_disclosure": true
+  },
+  "voice_id": "retell-Cimo",
+  "max_call_duration_ms": 3600000,
+  "interruption_sensitivity": 0.9,
+  "allow_user_dtmf": true,
+  "user_dtmf_options": {},
+  "conversationFlow": {
+    "conversation_flow_id": "conversation_flow_27b767a7020b",
+    "version": 0,
+    "last_modification_timestamp": 1783286905660,
+    "nodes": [
+      {
+        "instruction": {
+          "type": "static_text",
+          "text": "Hello! Thank you for calling QuensultingAI Dental Clinic.\n\nI'm your AI receptionist.\n\nI can help you:\n\n• Book an appointment\n• Answer questions about our clinic\n• Connect you with a member of our staff\n\nHow may I assist you today?"
+        },
+        "name": "Welcome Node",
+        "edges": [
+          {
+            "destination_node_id": "node-1783264755421",
+            "id": "edge-1783264406778-oil1nxyx2",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "The caller wants to book an appointment."
+            }
+          },
+          {
+            "destination_node_id": "node-1783284893041",
+            "id": "edge-1783264426410-2wbhvxacw",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "The caller is asking about clinic timings, services, consultation fees, payment methods, or the clinic location."
+            }
+          },
+          {
+            "destination_node_id": "node-1783286509815",
+            "id": "edge-1783264442201-bvmyiqwvu",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "The caller has a dental emergency or wants an urgent appointment."
+            }
+          },
+          {
+            "destination_node_id": "node-1783286641025",
+            "id": "edge-1783264471422-xtzep1g87",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "The caller wants to speak to a human receptionist or clinic staff."
+            }
+          }
+        ],
+        "start_speaker": "agent",
+        "id": "start-node-1783263629764",
+        "type": "conversation",
+        "display_position": {
+          "x": 630,
+          "y": -2994
+        }
+      },
+      {
+        "name": "End Call",
+        "id": "end-call-node-1783263629764",
+        "type": "end",
+        "display_position": {
+          "x": 678,
+          "y": -1938
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Politely end the call"
+        }
+      },
+      {
+        "name": "Book Appointment",
+        "edges": [
+          {
+            "id": "edge-1783264755421-dbhab1nxa",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "The caller has confirmed all appointment details."
+            }
+          }
+        ],
+        "id": "node-1783264755421",
+        "type": "conversation",
+        "display_position": {
+          "x": 198,
+          "y": -2490
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "You are helping the caller schedule a dental appointment.\n\nCollect these details naturally.\n\nAsk only one question at a time.\n\nRequired information:\n\n• Full Name\n• Phone Number\n• Email Address\n• Dental Service\n• Preferred Date\n• Preferred Time\n\nServices:\n\n• Dental Cleaning\n• Root Canal Treatment\n• Teeth Whitening\n• Braces Consultation\n• Tooth Extraction\n• General Dental Consultation\n\nIf any information is missing, politely ask again.\n\nAfter collecting all details, summarize them.\n\nAsk:\n\n\"Would you like me to confirm this appointment?\"\n\nIf yes, proceed to booking.\n"
+        }
+      },
+      {
+        "name": "Clinic FAQ",
+        "edges": [
+          {
+            "id": "edge-1783284893041-x9ry4k097",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "id": "node-1783284893041",
+        "type": "conversation",
+        "display_position": {
+          "x": 558,
+          "y": -2418
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "You are the AI receptionist for QuensultingAI Dental Clinic.\n\nAnswer questions only using the following information.\n\nClinic Timings:\nMonday to Saturday\n9:00 AM to 6:00 PM\n\nServices:\n• Dental Cleaning\n• Root Canal Treatment\n• Teeth Whitening\n• Braces Consultation\n• Tooth Extraction\n• General Dental Consultation\n\nWalk-ins:\nYes, depending on doctor availability.\n\nConsultation Fee:\n₹500\n\nLocation:\nPune, Maharashtra\n\nPayment Methods:\nCash, UPI, Credit Card and Debit Card.\n\nEmergency appointments are available depending on doctor availability.\n\nIf you don't know the answer, politely offer to connect the caller with a receptionist."
+        }
+      },
+      {
+        "name": "Emergency Assistance",
+        "edges": [
+          {
+            "id": "edge-1783286509815-133qospmt",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "id": "node-1783286509815",
+        "type": "conversation",
+        "display_position": {
+          "x": 918,
+          "y": -2394
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "I understand that you may have a dental emergency.\n\nIf you are experiencing severe pain, excessive bleeding, swelling, or a dental injury, I recommend visiting the clinic immediately or the nearest emergency dental facility.\n\nIf a doctor is available, I will arrange an emergency appointment or transfer your call to our clinic staff for immediate assistance.\n\nPlease stay on the line while I connect you."
+        }
+      },
+      {
+        "name": "Human Receptionist",
+        "edges": [
+          {
+            "id": "edge-1783286641025-15uwi2rg7",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "id": "node-1783286641025",
+        "type": "conversation",
+        "display_position": {
+          "x": 1278,
+          "y": -2466
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Certainly.\n\nI'll transfer your call to one of our receptionists.\n\nIf no receptionist is available at the moment, please leave your contact details, and someone from our clinic will call you back during our working hours.\n\nOur working hours are Monday to Saturday, from 9:00 AM to 6:00 PM.\n\nPlease hold while I transfer your call."
+        }
+      }
+    ],
+    "start_node_id": "start-node-1783263629764",
+    "start_speaker": "agent",
+    "model_choice": {
+      "type": "cascading",
+      "model": "gpt-5.1"
+    },
+    "tool_call_strict_mode": true,
+    "knowledge_base_ids": [],
+    "kb_config": {
+      "top_k": 3,
+      "filter_score": 0.6
+    },
+    "begin_tag_display_position": {
+      "x": 462,
+      "y": -2946
+    },
+    "is_published": false,
+    "is_transfer_cf": false
+  }
+}
